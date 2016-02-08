@@ -45,10 +45,7 @@ end
 def random_answer
     answers[Random.rand(answers.size)]
 end
-#makes shaking motion
-def shake_ball
-    Array.new(1 + Random.rand(5)).map{ |e| "[shake]" }.join(" ")
-end
+
 #prompts user for questions & put escape back to terminal in
 def wait_for_user
     question = gets.chomp
