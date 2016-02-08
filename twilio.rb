@@ -1,14 +1,14 @@
 #ruby magic 8 ball
 require 'rubygems'
 require 'twilio-ruby'
-account_sid = "2afc46ccd68d9ae11ea3bd72ca5a34d6"
-auth_token = "48445a960a0400b18a38320523b06a36"
+account_sid = "acctsid"
+auth_token = "authtoken"
 
 @client = Twilio::REST::Client.new(account_sid, auth_token)
 
 message = @client.account.messages.create(
-                                          :from => "+15147001902",
-                                          :to =>"+12502319294",
+                                          :from => "+twilionumber",
+                                          :to =>"+mycellnumber",
                                           :body => "Haaaii!"
                                           )
 
