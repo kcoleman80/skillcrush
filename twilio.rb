@@ -1,20 +1,4 @@
 #ruby magic 8 ball
-require 'rubygems'
-require 'twilio-ruby'
-account_sid = "acctsid"
-auth_token = "authtoken"
-
-@client = Twilio::REST::Client.new(account_sid, auth_token)
-
-message = @client.account.messages.create(
-                                          :from => "+twilionumber",
-                                          :to =>"+mycellnumber",
-                                          :body => "Haaaii!"
-                                          )
-
-puts message.to
-
-
 #answers from wikipedia
 def answers
     [
@@ -45,7 +29,10 @@ end
 def random_answer
     answers[Random.rand(answers.size)]
 end
-
+#makes shaking motion
+def shake_ball
+    Array.new(1 + Random.rand(5)).map{ |e| "[shake]" }.join(" ")
+end
 #prompts user for questions & put escape back to terminal in
 def wait_for_user
     question = gets.chomp
@@ -68,4 +55,20 @@ if __FILE__ == $0
         puts
     end
 end
+#now use gems
+require 'rubygems'
+require 'twilio-ruby'
+account_sid = "2afc46ccd68d9ae11ea3bd72ca5a34d6"
+auth_token = "48445a960a0400b18a38320523b06a36"
+
+@client = Twilio::REST::Client.new(account_sid, auth_token)
+
+message = @client.account.messages.create(
+                                          :from => "+15147001902",
+                                          :to =>"+12502319294",
+                                          :body => "You asked #{question}, your Magic 8 Ball answer is #{random_answer}"
+                                          )
+#terminal message
+puts "The following message was texted to #{message.to}:"
+puts message.body
 
